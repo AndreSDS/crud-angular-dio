@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes} from '@angular/router';
 
+import { CoreModule } from './../core/core.module';
+
 import { CourseListComponent } from './../component/course-list/course-list.component';
-import { NotFoundComponent } from './../component/not-found/not-found.component';
+import { NotFoundComponent } from '../core/component/not-found/not-found.component';
 import { InfoComponent } from './../component/info/info.component';
 
 const routes: Routes = [
@@ -17,6 +19,7 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
+    CoreModule,
     RouterModule.forRoot(routes)
   ],
   exports: [

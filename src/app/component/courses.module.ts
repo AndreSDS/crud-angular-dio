@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { StarModule } from './../shared/component/star-component/star.module';
 import { PipeModule } from './../shared/pipe/pipe.module';
 
-import { NotFoundComponent } from './not-found/not-found.component';
 import { InfoComponent } from './info/info.component';
 import { CourseListComponent } from './course-list/course-list.component';
 
@@ -16,7 +15,6 @@ import { CourseListComponent } from './course-list/course-list.component';
   declarations: [
     CourseListComponent,
     InfoComponent,
-    NotFoundComponent,
   ],
   imports: [
     CommonModule,

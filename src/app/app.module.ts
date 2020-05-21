@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 
 import { RoutingModule } from './routing/routing.module';
 import { CoursesModule } from './component/courses.module';
+import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     RoutingModule,
-    CoursesModule
+    CoursesModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
