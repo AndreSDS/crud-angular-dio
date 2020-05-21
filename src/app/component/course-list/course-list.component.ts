@@ -16,8 +16,27 @@ export class CourseListComponent implements OnInit {
   filteredCourses: Course[] = [];
 
   ngOnInit(): void {
-    this.courses = this.courseService.getAll();
-    this.filteredCourses = this.courses;
+    this.getAllCourses();
+  }
+
+  getAllCourses(): void{
+    this.courseService.getAll().subscribe({
+      next: courses =>{
+        this.courses = courses;
+        this.filteredCourses = this.courses;
+      },
+      error: err => console.log('Error: ',err)
+    });
+  }
+
+  deleteCourse(courseId: number): void{
+    this.courseService.deleteById(courseId).subscribe({
+      next: () => {
+        console.log("Course deleted with success");
+        this.getAllCourses();
+      },
+      error: err => console.log("Error: ", err)
+    });
   }
 
   set filter(value: string){
@@ -28,5 +47,4 @@ export class CourseListComponent implements OnInit {
   get filter(){
     return this._filterBy;
   }
-
 }

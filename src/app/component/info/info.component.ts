@@ -2,6 +2,7 @@ import { CourseService } from './../course.service';
 import { Course } from './../course';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-info',
@@ -18,11 +19,25 @@ export class InfoComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.course = this.courseService.getById(parseInt(this.activatedRoute.snapshot.paramMap.get('id')));
+    this.upDateCourse();
   }
 
+  upDateCourse(): void{
+    this.courseService.getById(parseInt(this.activatedRoute.snapshot.paramMap.get('id')))
+    .pipe(
+      take(1)
+    )
+    .subscribe({
+      next: course => this.course = course,
+      error: err => console.log("Error: ", err)
+    }); 
+  };
+
   save(): void {
-    this.courseService.save(this.course);
+    this.courseService.save(this.course).pipe(take(1)).subscribe({
+      next: course => this.course = course,
+      error: err => console.log("Error: ", err)
+    });
     this.router.navigate(['/courses'])
   }
 

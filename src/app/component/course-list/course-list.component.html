@@ -31,10 +31,10 @@
                 <app-star-component [rating]="course.rating"></app-star-component>
             </td>
             <td>
-                <a [routerLink]="['/courses/info', course.id]" routerLinkActive="router-link-active">
+                <a class="mr-2" [routerLink]="['/courses/info', course.id]" routerLinkActive="router-link-active">
                     <i class="fas fa-pen-square text-info"></i>
                 </a>
-                <a href="#">
+                <a (click)="deleteCourse(course.id)">
                     <i class="fas fa-minus-square text-danger"></i>
                 </a>
             </td>
